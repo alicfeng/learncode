@@ -1,0 +1,3 @@
+/home/alic/tutorial/github/alicfeng/learncode/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/alic/tutorial/github/alicfeng/learncode/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/alic/tutorial/github/alicfeng/learncode/cmake-build-debug/CMakeFiles/demo.dir
