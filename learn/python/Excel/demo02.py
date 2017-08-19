@@ -1,0 +1,76 @@
+# coding:utf-8
+import os
+from openpyxl import *
+from openpyxl.styles import PatternFill, Border, Side, Alignment, Protection, Font
+import datetime
+import sys
+
+# 文件名 - 时间戳的准备
+tempFileData = {}
+currentDay = datetime.datetime.now()
+yesterday = currentDay + datetime.timedelta(days=-1)
+tempFileData[1] = currentDay.strftime("%Y/%m/%d")
+# tempFileData[1] = currentDay.strftime("%Y/%m/%d")
+
+# ------config-star-------
+# 打开临时文件
+tempFilePath = "/data/select/shoujiduan_temp.xls"
+sourceFilePath = "/data/select/手机端数据-" + yesterday.strftime("%Y%m%d") + ".xlsx"
+targetFilePath = "/data/select/手机端数据-" + currentDay.strftime("%Y%m%d") + ".xlsx"
+# ------config-end-------
+
+# 判断文件是否存在
+if os.path.exists(tempFilePath):
+    print "文件存在，任务继续doing~~~"
+else:
+    print tempFilePath + "文件不存在"
+    print "Sorry! the task had stop~~~"
+    sys.exit(0)
+
+if os.path.exists(sourceFilePath):
+    print "文件存在，任务继续doing~~~"
+else:
+    print sourceFilePath + "文件不存在"
+    print "Sorry! the task had stop~~~"
+    sys.exit(0)  # 读取临时文件的数据
+
+tempFile = open(tempFilePath, 'r')
+# print tempFileData[1]
+index = 2
+while True:
+    line = tempFile.readline()
+    if line:
+        tempFileData[index] = line
+        # print tempFileData[index]
+        index += 1
+    else:
+        break
+tempFile.close()
+# print tempFileData
+
+# 加载目标文件并追加
+wb = load_workbook(targetFilePath)
+
+# 打开默认的工作表
+default_ws = wb.active
+
+# 获取工作的行数
+taskRow = len(default_ws.rows) + 1
+print taskRow
+
+# print len(default_ws.columns)
+
+# 写入数据
+# cell01 = default_ws.cell(row=taskRow, column=1).value = tempFileData[1]
+# cell02 = default_ws.cell(row=taskRow, column=2).value = tempFileData[2]
+# cell03 = default_ws.cell(row=taskRow, column=3).value = round(float(tempFileData[3]), 1)
+# cell04 = default_ws.cell(row=taskRow, column=4).value = tempFileData[4]
+# cell05 = default_ws.cell(row=taskRow, column=5).value = round(float(tempFileData[5]), 8)
+# cell06 = default_ws.cell(row=taskRow, column=6).value = round(float(tempFileData[6]), 8)
+# cell01.value = tempFileData[1]
+# cell02.value = tempFileData[2]
+# cell03.value = tempFileData[3]
+# cell04.value = tempFileData[4]
+# cell05.value = tempFileData[5]
+# cell06.value = tempFileData[6]
+
