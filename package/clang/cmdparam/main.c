@@ -11,12 +11,10 @@ int main(int argc,char *argv[])
         switch(opt)
         {
             case 'f':
-				strcpy(s,optarg);
-				printf("文件路径为: %s\n",s);
+				printf("文件路径为: %s\n",optarg);
 				break;
             case 'h':
-				strcpy(s,optarg);
-				printf("我是帮助helper: %s\n",s);
+				printf("我是帮助helper: %s\n",optarg);
 				break; 
 			default:
 				printf("没有参数\n");
