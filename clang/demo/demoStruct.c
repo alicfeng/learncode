@@ -13,6 +13,7 @@ typedef struct {
 
 
 int main(){
+ printf("",);
     User *user = malloc(sizeof(User));
     user->age =20;
     user->username = "alicfeng";
